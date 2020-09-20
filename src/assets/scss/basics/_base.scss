@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: segoe;
+}
+
+body {
+    background-color: $clr4;
+    color: clr2;
+    font-size: rem(14px);
+    margin: 0;
+}
+
+
+ul {
+    list-style: none;
+}
