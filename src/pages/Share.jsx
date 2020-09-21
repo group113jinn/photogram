@@ -1,5 +1,6 @@
 import React from 'react'
-import { Header } from './Header'
+import { Header } from '../cmps/Header'
+
 
 export function Share() {
     return (

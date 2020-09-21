@@ -3,9 +3,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PhotoGramApp } from './pages/PhotoGramApp'
 import { Home } from './pages/Home';
-import { Liked } from './cmps/Liked';
-import { Explore } from './cmps/Explore';
-import { Share } from './cmps/Share';
+import { Liked } from './pages/Liked';
+import { Explore } from './pages/Explore';
+import { Share } from './pages/Share';
 
 
 export function App() {
@@ -14,9 +14,9 @@ export function App() {
 
       <section >
         <Switch>
-          <Route component={Liked} exact path='/liked' />
-          <Route component={Explore} exact path='/explore' />
-          <Route component={Share} exact path='/share' />
+          <Route component={Liked}  path='/liked' />
+          <Route component={Explore} path='/explore' />
+          <Route component={Share} path='/share' />
           <Route component={PhotoGramApp} path='/feed' />
           <Route component={Home} path='/' />
         </Switch>
