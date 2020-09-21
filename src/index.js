@@ -4,14 +4,15 @@ import * as serviceWorker from './serviceWorker';
 import {  HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import {App} from './App';
 import './assets/scss/global.scss'
+import { App } from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <Router>
-     <App />
+    <App/>
     </Router>
     </Provider>
   </React.StrictMode>,

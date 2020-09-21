@@ -9,7 +9,7 @@
 .post-preiew-card {
     padding: 0;
     background-color: $clr5;
-    border: 1px solid $clr3;
+    outline: 1px solid $clr3;
     .incard-header {
         border-bottom: 1px solid $clr3;
         min-height: 40px;
@@ -37,14 +37,18 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        padding: 5px 5px 0px 5px;
+        padding: 10px 5px 0px 5px;
         li {
             ul {
                 padding-left: 0;
                 display: flex;
                 li {
                     padding: 0 10px;
+                    & :hover {
+                        cursor: pointer;
+                    } 
                 }
+                
             }
         }
     }
@@ -55,6 +59,12 @@
         }
         .comments-box {
             padding-left: 5px;
+        }
+    }
+    .write-comment{
+        input {
+            padding: 0px 5px 0px 5px;
+            min-width: 100%;
         }
     }
 }

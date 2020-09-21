@@ -4,60 +4,77 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom: 1px solid $clr2 ;
+    border-bottom: 1px solid $clr2;
     min-height: 5vh;
     min-width: 100%;
     z-index: 1;
     .logo {
+        // padding-left: 120px;
         font-family: billabong;
         font-size: 2rem;
     }
-    a, link {
+    a,
+    link {
         text-decoration: none;
         color: $clr1;
         & :hover {
             color: $clr2;
         }
     }
-    ul{ 
+    ul {
+        transform: translate(60px);
         margin: 0;
         padding: 0;
         width: 200px;
         min-width: 120px;
         display: flex;
-       justify-content: space-evenly;
-       li{
-           img{
-               height: 100%;
-               width: 22px;
-           }
-       }
-       a {
-           position: relative;
-       }
+        justify-content: space-around;
+        li {
+            img {
+                height: 100%;
+                width: 22px;
+            }
+        }
+        a {
+            position: relative;
+        }
     }
-    .search-box{
-        background-color: $clr4;
+    .header-search-section {
+       transform: translate(50px);
+        padding: 6px;
         border: 1px solid $clr3;
+        input{
+            padding-left: 5px;
+            outline: none;
+            background-color: $clr4;
+            border: none;
+           
+        }
+        span{
+            background-color: $clr4;
+        }
+       
     }
-
 }
+
+
 
 @include for-mobile-layout {
     .main-header {
         flex-direction: column;
         .header-search-section {
+            transform: translate(0px);
             order: 1;
             padding-bottom: 3px;
+            display: flex;
         }
         ul {
+            transform: translate(0px);
             padding-top: 5px;
             width: 100%;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
             align-items: flex-start;
         }
     }
-    
-    
 }
