@@ -1,7 +1,54 @@
 .main-home {
   background-color: $clr4;
-    font-family: billabong;
+}
+
+.signin-container {
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 20vh auto;
+  background-color: $clr5;
+  outline: 1px solid $clr3;
+  min-height: 500px;
+  min-width: 180px;
+  max-width: 400px;
+  input{
+    padding: 6px;
+    outline: none;
+    background-color: $clr4;
+    border: 1px solid $clr3;
+}
+h1 {
+  font-family: billabong;
     font-size: rem(50px);
-    text-align: center;
-  top: 50vh;
+    margin: 0;
+}
+div{
+  button{
+    background-color: $clr4;
+    border: 1px solid $clr3;
+    border-radius: 2px;
+    background-color: $clr6;
+    opacity: 0.7;
+    color: $clr4;
+   
+  }
+   & :hover {
+      cursor: pointer;
+      opacity: 1;
+      background-color: $clr6;
+      color: $clr4;
+    }
+}
+
+.login-button {
+  min-width: 140px;
+  padding: 6px;
+}
+.guest-button {
+  min-width: 100px;
+  padding: 6px;
+}
 }
