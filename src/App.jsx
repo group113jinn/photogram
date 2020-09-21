@@ -14,7 +14,7 @@ export function App() {
 
       <section >
         <Switch>
-          <Route component={Liked}  path='/liked' />
+          <Route component={Liked} path='/liked' />
           <Route component={Explore} path='/explore' />
           <Route component={Share} path='/share' />
           <Route component={PhotoGramApp} path='/feed' />

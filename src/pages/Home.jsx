@@ -16,10 +16,10 @@ export function Home() {
           <input type="text" placeholder="Password" />
         </div>
         <div>
-         <button className="login-button">Login</button>
-      </div>
+          <button className="login-button">Login</button>
+        </div>
         <div>
-         <Link to="/feed" ><button className="guest-button">Guest Mode</button></Link>
+          <Link to="/feed" ><button className="guest-button">Guest Mode</button></Link>
         </div>
 
 
