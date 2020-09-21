@@ -2,15 +2,37 @@
     background-color: $clr4;
 }
 
+.home-photo-signin {
+    background-color: $clr4;
+    margin: 20vh auto;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    height: 600px;
+}
+
+.home-logo {
+   width: 400px;
+//   background-image: url(../../img/k.png);
+//   background-repeat: no-repeat;
+  
+
+   img {
+       height: 100%;
+       width: 100%;
+   }
+}
+
 .signin-container {
+    margin-top: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 20vh auto;
     background-color: $clr5;
     outline: 1px solid $clr3;
-    min-height: 500px;
+     flex-grow: 1;
+    height: 400px;
     min-width: 180px;
     max-width: 400px;
     input {
