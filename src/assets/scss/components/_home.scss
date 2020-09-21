@@ -12,10 +12,7 @@
 }
 
 .home-logo {
-   width: 400px;
-//   background-image: url(../../img/k.png);
-//   background-repeat: no-repeat;
-  
+   max-width: 400px;
 
    img {
        height: 100%;
@@ -71,5 +68,16 @@
     .guest-button {
         min-width: 100px;
         padding: 6px;
+    }
+}
+
+@include for-mobile-layout{
+    .home-photo-signin {
+        max-height: 300px;
+        margin: 0;
+    }
+    .signin-container{
+        margin: 0;
+        order: -1;
     }
 }
