@@ -35,7 +35,7 @@ div{
     color: $clr4;
    
   }
-   & :hover {
+   & button:active, & button:hover {
       cursor: pointer;
       opacity: 1;
       background-color: $clr6;
