@@ -32,7 +32,7 @@ export function PostPreview({ post }) {
       </ul>
       <ul className="post-description">
         <li>
-          Posted by <span> {post.by.username}</span> : {post.txt}
+         <span> {post.by.username}</span> : {post.txt}
         </li>
         <li>
           <ul className="comments-box">
