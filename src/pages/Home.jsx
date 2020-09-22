@@ -26,7 +26,7 @@ export function Home() {
           <button className="login-button">Login</button>
         </div>
         <div>
-          <Link to="/feed" ><button className="guest-button">Guest Mode</button></Link>
+          <Link to="/feed" ><button className="guest-button">Guest</button></Link>
         </div>
 
       </article>
