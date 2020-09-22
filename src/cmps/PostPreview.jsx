@@ -43,7 +43,7 @@ export function PostPreview({ post }) {
         </li>
       </ul>
 
-      <li className="write-comment"><input placeholder="Write a comment..."></input></li>
+      <li className="write-comment"><input type="text" placeholder="Write a comment..."></input></li>
     </ul>
   )
 }

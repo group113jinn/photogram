@@ -9,7 +9,7 @@ export function Header() {
         <section className="main-header">
             <Link to="/feed"><div className="logo">Photogram</div></Link>
             <section className="header-search-section">
-                <span role="img" aria-label="magnifying-glass"> &#x1F50D;&#xFE0E;</span>
+                <span role="img" aria-label="magnifying-glass" className="magnifier"> &#x1F50D;&#xFE0E;</span>
                 <input type="search" placeholder="Search" className="search-box" />
             </section>
             <ul>

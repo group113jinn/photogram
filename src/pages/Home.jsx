@@ -20,7 +20,7 @@ export function Home() {
           <input type="text" placeholder="Username" />
         </div>
         <div>
-          <input type="text" placeholder="Password" />
+          <input type="password" placeholder="Password" />
         </div>
         <div>
           <button className="login-button">Login</button>

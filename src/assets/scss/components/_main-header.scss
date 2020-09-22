@@ -42,17 +42,26 @@
     }
     .header-search-section {
         transform: translate(50px);
-        padding: 6px;
+        padding: 3px;
         border: 1px solid $clr3;
+        
         input {
+            text-align: center;
             padding-left: 5px;
             outline: none;
             background-color: $clr4;
             border: none;
+          
+         
         }
         span {
             background-color: $clr4;
         }
+        & :focus {
+            text-align: start;
+        }
+     
+      
     }
 }
 
