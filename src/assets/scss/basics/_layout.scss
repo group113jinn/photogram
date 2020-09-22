@@ -1,6 +1,6 @@
 .main-container {
     position: relative;
-    top: 5vh;
+    top: 8vh;
     display: grid;
     grid-template-columns: 20px 1fr 20px;
     >* {
@@ -10,7 +10,7 @@
         }
     }
     @include for-mobile-layout {
-        top: 8vh;
+        top: 20vh;
         grid-template-columns: minmax(0px, 1fr) minmax(auto, 400px) minmax(0px, 1fr);
     }
     @include for-narrow-layout {
