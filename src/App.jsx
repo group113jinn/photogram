@@ -6,12 +6,17 @@ import { Home } from './pages/Home';
 import { Liked } from './pages/Liked';
 import { Explore } from './pages/Explore';
 import { Share } from './pages/Share';
+import { Modal } from './cmps/Modal';
+
+
+
+
+
 
 
 export function App() {
   return (
     <main >
-
       <section >
         <Switch>
           <Route component={Liked} path='/liked' />
@@ -20,6 +25,7 @@ export function App() {
           <Route component={PhotoGramApp} path='/feed' />
           <Route component={Home} path='/' />
         </Switch>
+        <Modal />
       </section>
     </main >
   );

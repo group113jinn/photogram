@@ -1,28 +1,41 @@
-.incard-img-preview {
-    @include aspect-ratio(1, 1);
-    img {
-        height: 100%;
-        object-fit: cover;
-    }
-}
+
 
 .post-preiew-card {
     padding: 0;
     background-color: $clr5;
     border: 1px solid $clr3;
     border-radius: 3px;
+    line-height: rem(24px);
     .incard-header {
+        padding: 0px 15px 0px 5px;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         border-bottom: 1px solid $clr3;
-        min-height: 40px;
+        height: 60px;
+        .post-menu {
+            button {
+                transform: rotate(90deg);
+                border: none;
+                background-color: $clr5;
+                font-size: em(25px);
+            }
+            
+        }
         .user-pic-name {
-            padding: 5px 5px 0px 5px;
             display: flex;
             align-items: center;
             font-weight: bold;
+            color: $clr1;
             img {
-                padding: 0 10px;
-                height: 30px;
+                margin-right: 10px;
+                height: 30px;       
                 border-radius: 50%;
+            }
+            div{
+                margin: 10px;
+                margin: 0;
             }
         }
     }
@@ -32,6 +45,8 @@
         min-height: 50px;
         input {
             border: none;
+            padding: 10px 10px 10px 10px;
+            min-width: 100%;
         }
     }
     .shortcuts-bar {
@@ -53,18 +68,22 @@
         }
     }
     .post-description {
-        padding: 5px 10px 5px 10px;
+        padding: 5px 10px 10px 10px;
         span {
             font-weight: bold;
+            color: $clr1;
         }
         .comments-box {
             padding-left: 0;
         }
     }
-    .write-comment {
-        input {
-            padding: 10px 10px 10px 10px;
-            min-width: 100%;
-        }
+ 
+}
+
+.incard-img-preview {
+    @include aspect-ratio(1, 1);
+    img {
+        height: 100%;
+        object-fit: cover;
     }
 }
