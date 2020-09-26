@@ -1,3 +1,4 @@
+
 // Setup
 @import "./setup/typography";
 @import "./setup/variables";
@@ -7,7 +8,9 @@
 @import "./basics/base";
 @import "./basics/layout";
 // Components
-@import "./components/modal";
+@import "./components/post-add";
+@import "./components/userprofile";
+@import "./components/previewmenu";
 @import "./components/main-header";
 @import "./components/post-preview";
 @import "./components/explore";

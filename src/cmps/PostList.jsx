@@ -1,11 +1,12 @@
 import React from 'react'
 import { PostPreview } from './PostPreview'
 
-export function PostList({ posts }) {
+export function PostList(props) {
+    const { posts,showModal} = props
     return (
         <>
             {
-                posts.map(post => <PostPreview post={post} key={post._id} />)
+                posts.map(post => <PostPreview  showModal={showModal} post={post} key={post._id}/>)
             }
         </>
     )
