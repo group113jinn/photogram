@@ -31,8 +31,6 @@ closeModal = () => {
     this.setState({ isModalShown: false })
 }
 
-
-
     render() {
         return (
             <>
