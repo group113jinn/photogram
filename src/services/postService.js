@@ -21,11 +21,7 @@ function remove(postId) {
 
 function save(post) {
     return axios.post(BASE_URL, post).then(resolveData)
-    // if (post._id) {
-    //     return axios.put(`${BASE_URL}/${post._id}`, post)
-    // } else {
-    //     return axios.post(BASE_URL, post).then(resolveData)
-    // }
+  
 }
 
 
