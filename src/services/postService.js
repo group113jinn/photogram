@@ -20,11 +20,12 @@ function remove(postId) {
 }
 
 function save(post) {
-    if (post._id) {
-        return axios.put(`${BASE_URL}/${post._id}`, post)
-    } else {
-        return axios.post(BASE_URL, post).then(resolveData)
-    }
+    return axios.post(BASE_URL, post).then(resolveData)
+    // if (post._id) {
+    //     return axios.put(`${BASE_URL}/${post._id}`, post)
+    // } else {
+    //     return axios.post(BASE_URL, post).then(resolveData)
+    // }
 }
 
 

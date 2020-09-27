@@ -1,7 +1,53 @@
-.modal-content {
-    input {
-        border: none;
-        padding: 10px 10px 10px 10px;
-        min-width: 100%;
+
+.add-modal-content {
+    padding: 0;
+    background: $clr5;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    position: relative;
+    li {
+        letter-spacing: em(0.6px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40px;
+        border-bottom: 1px solid $clr3;
+        cursor: pointer;
+        input {
+            border: none;
+            padding: 10px 10px 10px 10px;
+            min-width: 100%;
+        }
     }
+    li:last-child{
+        border-bottom: 0;
+    }
+
+}
+
+@include for-mobile-layout {
+    .add-modal-content {
+        min-width: 80%;
+    }
+
+}
+
+@include for-narrow-layout {
+    .add-modal-content {
+        min-width: 60%;
+    }
+
+}
+@include for-normal-layout {
+    .add-modal-content {
+        min-width: 40%;
+    }
+    
+}
+@include for-wide-layout {
+    .add-modal-content {
+        min-width: 30%;
+    }
+    
 }

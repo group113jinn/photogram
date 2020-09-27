@@ -1,13 +1,14 @@
 import React from 'react'
 
 export function PreviewMenu(props) {
-    const {isModalShown,post,closeModal} = props
+    const {isModalShown,post,closeModal,onDelete} = props
     return (
+    
         <div>
              <div className={`modal-wrapper ${isModalShown ? '' : 'hide'}`} onClick={closeModal} >
                     <ul className="modal-content" onClick={(ev) => ev.stopPropagation()}>
                         <li>Unfollow</li>
-                    <li onClick={(ev)=>this.onDelete(ev,post._id) }  >Delete</li>
+                    <li onClick={(ev)=>onDelete(ev,post._id) }>Delete</li>
                         <li onClick={closeModal}>Close</li>
                     </ul>
                 </div >

@@ -29,6 +29,7 @@ class _PhotoGramApp extends Component {
     onDelete = (ev, postId) => {
         ev.stopPropagation();
         this.props.removePost(postId);
+        this.setState({post:null})
         this.closeModal();
 
     }
@@ -44,7 +45,7 @@ class _PhotoGramApp extends Component {
                 <div className="main-container">
                     <PostList showModal={this.showModal} posts={posts} />
                 </div>
-                <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} />
+                <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete}/>
             </>
         );
     }

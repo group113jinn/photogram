@@ -57,4 +57,3 @@ export function PostPreview({ post, showModal}) {
     </ul>
   )
 }
-
