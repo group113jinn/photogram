@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import { v4 as uuidv4 } from 'uuid'
 const BASE_URL = ' http://localhost:3010/post'
 const resolveData = res => res.data
 
@@ -25,9 +24,6 @@ function remove(postId) {
 }
 
 function save(post) {
-    // console.log("post",post);
-    //   return axios.post(BASE_URL, post).then(resolveData)
-      
     if (post._id) {
         return axios.put(`${BASE_URL}/${post._id}`, post)
     } else {

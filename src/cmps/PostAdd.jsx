@@ -22,16 +22,22 @@ export class PostAdd extends Component {
             alt: "",
             txt: "",
             createdAt: 1600241052029,
-            reactions: [
-
-            ],
+            reactions: [],
             comments: [
                 {
                     by: {
-                        username: "eugene_b",
+                        username: "eugene_popo",
                         imgUrl: "http://image"
                     },
                     createdAt: 1600241052029,
+                    txt: "cool"
+                },
+                {
+                    by: {
+                        username: "eugene_puki",
+                        imgUrl: "http://image"
+                    },
+                    createdAt: 16002410520299,
                     txt: "cool"
                 }
             ]
@@ -43,13 +49,10 @@ export class PostAdd extends Component {
     postAdd = (ev, post) => {
         ev.preventDefault();
         ev.stopPropagation();
-        // if (post.imgUrls.length === 0) {
-        //     console.log("Loading...")
-        // } else {
         console.log("saving");
+        console.log("prp",this.props);
         this.props.storeProps.savePost(post);
         this.props.closeModal();
-        // }
     }
 
 
@@ -106,7 +109,9 @@ export class PostAdd extends Component {
                                     <div>{post.by.username}</div>
                                 </div>
                             </li>
-                            <li className="incard-img-preview"></li>
+                            <li className="incard-img-preview">
+                                <img src={post.imgUrls[0]} alt=""/>
+                            </li>
 
                             <li className="write-comment">
                                 <input name="txt" type="text" placeholder="Write a description..." onChange={this.onInputChange} ></input>

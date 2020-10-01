@@ -3,43 +3,49 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Header } from '../cmps/Header'
 import { PostAdd } from '../cmps/PostAdd'
-import {loadPosts,savePost} from '../store/actions/postActions'
+import { loadPosts, savePost } from '../store/actions/postActions'
+import profile_empty_img from '../assets/img/profile_empty.jpg'
 
 
 
- class _UserProfile extends Component {
- state = {
-    isModalShown: false,
-    post: null
- }
-
- 
- componentDidMount() {
-    this.props.loadPosts()
-}
-
- showModal = () => {
-    this.setState({ isModalShown: true })
-
-}
+class _UserProfile extends Component {
+    state = {
+        isModalShown: false,
+        post: null
+    }
 
 
-closeModal = () => {
-    this.setState({ isModalShown: false })
+    componentDidMount() {
+        this.props.loadPosts()
+    }
 
-}
+    showModal = () => {
+        this.setState({ isModalShown: true })
+
+    }
+
+
+    closeModal = () => {
+        this.setState({ isModalShown: false })
+
+    }
 
     render() {
         return (
             <>
-            <Header />
-            <div className="add-post-container">
-                <div className="add-navigation">
-                <button className="add-button" onClick={this.showModal}>Add Post</button>
-                <Link to="/"><button className="add-button">Sign out</button></Link>
-                <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal} postAdd={this.postAdd} storeProps={this.props}/>
-                </div>
-            </div>
+                <Header />
+                <section className="profile-container">
+                    <img src={profile_empty_img} alt="profile_picture" className="profile-pic" />
+                    <div className="add-post-container">
+
+                        <div className="add-navigation">
+                            <button className="add-button" onClick={this.showModal}>Add Post</button>
+                            <Link to="/"><button className="add-button">Sign out</button></Link>
+                            <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal}
+                                 storeProps={this.props} />
+                        </div>
+                    </div>
+                </section>
             </>
         )
     }

@@ -1,5 +1,4 @@
  export async function uploadImg(ev) {
-    console.log("Hello");
     const CLOUD_NAME = "jinn113"
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
