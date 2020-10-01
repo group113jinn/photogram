@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Header } from '../cmps/Header'
 import { PostAdd } from '../cmps/PostAdd'
 import {loadPosts,savePost} from '../store/actions/postActions'
@@ -9,6 +10,7 @@ import {loadPosts,savePost} from '../store/actions/postActions'
  class _UserProfile extends Component {
  state = {
     isModalShown: false,
+    post: null
  }
 
  
@@ -18,21 +20,13 @@ import {loadPosts,savePost} from '../store/actions/postActions'
 
  showModal = () => {
     this.setState({ isModalShown: true })
-    // const { posts } = this.props;
-    // this.setState({posts: posts})
-    // console.log(posts);
-}
-
-postAdd = (ev,post) => {
-    ev.stopPropagation();
-    this.props.savePost(post);
-    this.setState({post: post})
-    this.closeModal();
 
 }
+
 
 closeModal = () => {
     this.setState({ isModalShown: false })
+
 }
 
     render() {
@@ -42,7 +36,8 @@ closeModal = () => {
             <div className="add-post-container">
                 <div className="add-navigation">
                 <button className="add-button" onClick={this.showModal}>Add Post</button>
-                <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal} postAdd={this.postAdd}/>
+                <Link to="/"><button className="add-button">Sign out</button></Link>
+                <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal} postAdd={this.postAdd} storeProps={this.props}/>
                 </div>
             </div>
             </>
@@ -51,7 +46,6 @@ closeModal = () => {
 }
 
 const mapStateToProps = state => {
-
     return {
         posts: state.postReducer.posts
     }
@@ -60,9 +54,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadPosts,
     savePost
-    
-    
-   
+
 }
 
 export const UserProfile = connect(mapStateToProps, mapDispatchToProps)(_UserProfile)

@@ -12,10 +12,10 @@ export function loadPosts() {
 
 
 export function savePost(post) {
-    
     return async dispatch => {
+        const actionType = post._id ? 'EDIT_POST' : 'ADD_POST';
         const _post = await postService.save(post);
-        dispatch({ type: 'ADD_POST', _post })
+        dispatch({ type: actionType, _post })
       };
 }
 

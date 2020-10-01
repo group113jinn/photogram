@@ -84,6 +84,13 @@
     @include aspect-ratio(1, 1);
     img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
+      
     }
+    // img {
+    //     width: 100%;
+    //     object-fit: cover;
+    //     overflow: hidden;
+    // }
 }

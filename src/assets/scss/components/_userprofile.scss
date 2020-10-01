@@ -1,12 +1,14 @@
 .add-post-container {
-    
-        position: relative;
-        text-align: center;
-        padding-top: 100px;
-        top: 8vh;
-
+    position: relative;
+    text-align: center;
+    padding-top: 100px;
+    top: 8vh;
     .add-navigation {
-      top: 200px;
+        top: 200px;
+        a {
+            display: inline-block;
+              text-decoration: none;
+        }
         .add-button {
             border-radius: 2px;
             height: 30px;
@@ -14,16 +16,9 @@
             background: $clr5;
             cursor: pointer;
             &:hover {
-                background: rgba($clr6,0.85);
+                background: rgba($clr6, 0.85);
                 color: $clr5;
-           
             }
-         
         }
-      
     }
-
 }
-
-
-

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPosts, removePost } from '../store/actions/postActions';
+import { loadPosts, removePost, savePost } from '../store/actions/postActions';
 import { PostList } from '../cmps/PostList'
 import { Header } from '../cmps/Header';
 import { PreviewMenu } from '../cmps/PreviewMenu';
@@ -29,8 +29,25 @@ class _PhotoGramApp extends Component {
     onDelete = (ev, postId) => {
         ev.stopPropagation();
         this.props.removePost(postId);
-        this.setState({post:null})
+        this.setState({ post: null });
         this.closeModal();
+
+    }
+
+    onLikePost = (ev, post) => {
+        ev.preventDefault()
+        ev.stopPropagation();
+        let rest = post.reactions;
+        if (post.reactions.some(reaction => reaction.by.username === "eugene_b")) { // change user
+            const newReactions = (post.reactions.filter(reaction => reaction.by.username !== "eugene_b"));
+          const newPost = {...post,reactions:newReactions}
+               this.props.savePost(newPost)
+
+        } else {
+            this.props.savePost({ ...post, reactions: [...rest, { by: { username: "eugene_b" } }] });
+     
+        }
+       this.props.loadPosts();
 
     }
 
@@ -43,9 +60,9 @@ class _PhotoGramApp extends Component {
             <>
                 <Header />
                 <div className="main-container">
-                    <PostList showModal={this.showModal} posts={posts} />
+                    <PostList showModal={this.showModal} onLikePost={this.onLikePost} posts={posts} />
                 </div>
-                <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete}/>
+                <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete} />
             </>
         );
     }
@@ -59,7 +76,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadPosts,
-    removePost
+    removePost,
+    savePost
 }
 
 export const PhotoGramApp = connect(mapStateToProps, mapDispatchToProps)(_PhotoGramApp)
