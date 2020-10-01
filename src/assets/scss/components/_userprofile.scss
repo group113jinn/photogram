@@ -3,14 +3,14 @@
     justify-content: space-around;
 
     position: relative;
-    top: 8vh;
+    top: 9vh;
     
         .profile-pic{
             height: 150px;
             width: 150px;
         }
         @include for-mobile-layout {
-            top: 13vh;
+            top: 17vh;
             flex-direction: column;
             align-items: center;
         }
