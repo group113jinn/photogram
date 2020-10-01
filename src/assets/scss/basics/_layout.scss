@@ -10,7 +10,7 @@
         }
     }
     @include for-mobile-layout {
-        top: 11.5vh;
+        top: 15vh;
         grid-template-columns: minmax(0px, 1fr) minmax(auto, 400px) minmax(0px, 1fr);
     }
     @include for-narrow-layout {
