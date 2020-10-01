@@ -10,7 +10,7 @@
             width: 150px;
         }
         @include for-mobile-layout {
-            top: 17vh;
+            top: 19vh;
             flex-direction: column;
             align-items: center;
         }
