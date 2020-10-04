@@ -7,10 +7,9 @@
     border-bottom: 1px solid $clr2;
     padding: 10px;
     min-height: 5vh;
-    min-width: 100%;
+    width: 100%;
     z-index: 1;
     .logo {
-        // padding-left: 120px;
         font-family: billabong;
         font-size: 2rem;
     }
@@ -23,11 +22,11 @@
         }
     }
     ul {
-        transform: translate(60px);
+        // transform: translate(60px);
         margin: 0;
         padding: 0;
         width: 200px;
-        min-width: 120px;
+        min-width: 130px;
         display: flex;
         justify-content: space-around;
         li {
@@ -40,8 +39,11 @@
             position: relative;
         }
     }
+    .navbar-profile-pic{
+        border-radius: 50%;
+    }
     .header-search-section {
-        transform: translate(50px);
+        // transform: translate(50px);
         padding: 3px;
         border: 1px solid $clr3;
         
@@ -51,8 +53,6 @@
             outline: none;
             background-color: $clr4;
             border: none;
-          
-         
         }
         span {
             background-color: $clr4;
@@ -61,8 +61,34 @@
         & :focus {
             text-align: start;
         }
-     
-      
+    }
+}
+
+
+
+
+@include for-wide-layout {
+    .main-header {
+        
+        .header-search-section {
+            transform: translate(50px);
+        }
+        ul {
+        transform: translate(60px);
+
+        }
+    }
+}
+@include for-normal-layout {
+    .main-header {
+        
+        .header-search-section {
+            transform: translate(50px);
+        }
+        ul {
+        transform: translate(60px);
+
+        }
     }
 }
 

@@ -4,11 +4,9 @@
 
 .home-photo-signin {
     background-color: $clr4;
-    margin: 20vh auto;
+    margin: 15vh auto;
     display: flex;
-    flex-wrap: wrap;
     max-width: 800px;
-    height: 600px;
 }
 
 .home-logo {
@@ -27,16 +25,18 @@
     flex-direction: column;
     justify-content: space-evenly;
     background-color: $clr5;
-    outline: 1px solid $clr3;
+    border: 1px solid $clr3;
+    border-radius: 3px;
      flex-grow: 1;
-    height: 400px;
-    min-width: 180px;
-    max-width: 400px;
+    max-height: 400px;
+    min-height: 250px;
+    min-width: 200px;
     input {
         padding: 6px;
         outline: none;
         background-color: $clr4;
         border: 1px solid $clr3;
+        border-radius: 3px;
     }
     h1 {
         font-family: billabong;
@@ -48,7 +48,7 @@
         button {
             background-color: $clr4;
             border: 1px solid $clr3;
-            border-radius: 2px;
+            border-radius: 4px;
             background-color: $clr6;
             opacity: 0.7;
             color: $clr4;
@@ -73,11 +73,25 @@
 
 @include for-mobile-layout{
     .home-photo-signin {
-        max-height: 300px;
-        margin: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+      
+        h1{
+            font-size: rem(35px);
+        }
+        img{
+            padding: 0 5vh;
+        }
+    
     }
     .signin-container{
         margin: 0;
         order: -1;
+        margin-bottom: 5px;
+        max-width: 400px;
     }
+  
+   
 }

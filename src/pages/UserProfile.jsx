@@ -30,12 +30,17 @@ class _UserProfile extends Component {
 
     }
 
+    setProfilePhoto = () => {//temporary until userservice
+        const profile_photo = "https://ca.slack-edge.com/T0146T47BKR-U014ETN7XRU-1b360e211eb6-512"
+    return profile_photo?profile_photo:profile_empty_img
+    }
+
     render() {
         return (
             <>
-                <Header />
+                <Header setProfilePhoto={this.setProfilePhoto}/>
                 <section className="profile-container">
-                    <img src={profile_empty_img} alt="profile_picture" className="profile-pic" />
+                    <img src={this.setProfilePhoto()} alt="profile_picture" className="profile-pic" />
                     <div className="add-post-container">
 
                         <div className="add-navigation">

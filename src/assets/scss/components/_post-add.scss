@@ -13,6 +13,7 @@
         align-items: center;
         min-height: 40px;
         border-bottom: 1px solid $clr3;
+        cursor: pointer;
         button {
             letter-spacing: em(0.6px);
             background: none;
@@ -28,8 +29,9 @@
             padding: 10px 10px 10px 10px;
             min-width: 100%;
             button{
-            cursor: pointer;
+                cursor: pointer;
             }
+         
         }
      
     }
@@ -53,6 +55,16 @@
     }
 
 }
+
+::-webkit-file-upload-button {
+   width: 100%;
+  background: $clr5;
+  color: $clr1;
+   border: none;
+   outline: none;
+   letter-spacing: em(0.6px);
+   cursor: pointer;
+  }
 
 
 

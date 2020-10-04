@@ -23,24 +23,8 @@ export class PostAdd extends Component {
             txt: "",
             createdAt: 1600241052029,
             reactions: [],
-            comments: [
-                {
-                    by: {
-                        username: "eugene_popo",
-                        imgUrl: "http://image"
-                    },
-                    createdAt: 1600241052029,
-                    txt: "cool"
-                },
-                {
-                    by: {
-                        username: "eugene_puki",
-                        imgUrl: "http://image"
-                    },
-                    createdAt: 16002410520299,
-                    txt: "cool"
-                }
-            ]
+            comments: [],
+            isCommentsShown: false
         }
 
     }
@@ -49,12 +33,9 @@ export class PostAdd extends Component {
     postAdd = (ev, post) => {
         ev.preventDefault();
         ev.stopPropagation();
-        console.log("saving");
-        console.log("prp",this.props);
         this.props.storeProps.savePost(post);
         this.props.closeModal();
     }
-
 
     onInputChange = (ev) => {
         ev.preventDefault();
@@ -70,7 +51,8 @@ export class PostAdd extends Component {
             uploadImg(ev).then((data) => {
                 this.setState(prevState => ({
                     isUploading: false,
-                    didUserUploadImage: true, post: {
+                    didUserUploadImage: true,
+                    post: {
                         ...prevState.post, imgUrls:
                             [data.secure_url, ...prevState.post.imgUrls]
                     }
@@ -83,7 +65,7 @@ export class PostAdd extends Component {
             this.setState(prevState => ({
                 isUploading: false,
                 post: {
-                      ...prevState.post, txt: value
+                    ...prevState.post, txt: value
                 }
             }))
 
@@ -110,17 +92,17 @@ export class PostAdd extends Component {
                                 </div>
                             </li>
                             <li className="incard-img-preview">
-                                <img src={post.imgUrls[0]} alt=""/>
+                                <img src={post.imgUrls[0]} alt="" />
                             </li>
 
                             <li className="write-comment">
                                 <input name="txt" type="text" placeholder="Write a description..." onChange={this.onInputChange} ></input>
                             </li>
 
-                            <li> <input name="imgUrls" type="file" id="photo-input" onChange={this.onInputChange} />
+                            <li> <input name="imgUrls" type="file"  onChange={this.onInputChange} />
                             </li>
                             <li>
-                                <button type="submit" disabled={!didUserUploadImage}>{isUploading?"Uploading...":!didUserUploadImage ? "" :"Post"}</button>
+                                <button type="submit" disabled={!didUserUploadImage}>{isUploading ? "Uploading..." : !didUserUploadImage ? "" : "Post"}</button>
                             </li>
 
                             <li onClick={closeModal}>Close</li>

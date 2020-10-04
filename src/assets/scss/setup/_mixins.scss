@@ -1,13 +1,13 @@
 /* Breakpoint mixins */
 
 @mixin for-mobile-layout {
-    @media (max-width: $mobile-breakpoint + 2) {
+    @media (max-width: $mobile-breakpoint) {
         @content;
     }
 }
 
 @mixin for-narrow-layout {
-    @media (min-width: $mobile-breakpoint + 2) {
+    @media (min-width: $mobile-breakpoint) {
         @content;
     }
 }

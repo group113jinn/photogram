@@ -7,16 +7,40 @@ import { PreviewMenu } from '../cmps/PreviewMenu';
 
 
 
+
 class _PhotoGramApp extends Component {
 
     state = {
         isModalShown: false,
-        post: null
+        post: {
+            isCommentsShown: false
+        }
     }
 
     componentDidMount() {
         this.props.loadPosts()
     }
+
+
+    onToggleComments = (ev,post) => {
+        ev.preventDefault()
+        ev.stopPropagation();
+        if (this.state.post.isCommentsShown) { // change user
+          const newPost = {...post,isCommentsShown:false}
+        this.props.savePost(newPost)
+        this.props.loadPosts();
+        this.setState({post:newPost})
+        this.props.loadPosts();
+        } else {
+            const newPost = {...post,isCommentsShown:true}
+            this.props.savePost(newPost)
+            this.props.loadPosts();
+            this.setState({post:newPost})
+            this.props.loadPosts();
+        }
+       this.props.loadPosts();
+    }
+    
 
     closeModal = () => {
         this.setState({ isModalShown: false })
@@ -29,9 +53,7 @@ class _PhotoGramApp extends Component {
     onDelete = (ev, postId) => {
         ev.stopPropagation();
         this.props.removePost(postId);
-        this.setState({ post: null });
         this.closeModal();
-
     }
 
     onLikePost = (ev, post) => {
@@ -42,13 +64,37 @@ class _PhotoGramApp extends Component {
             const newReactions = (post.reactions.filter(reaction => reaction.by.username !== "eugene_b"));
           const newPost = {...post,reactions:newReactions}
                this.props.savePost(newPost)
-
+               this.props.loadPosts();
         } else {
             this.props.savePost({ ...post, reactions: [...rest, { by: { username: "eugene_b" } }] });
-     
+            this.props.loadPosts();
         }
        this.props.loadPosts();
+    }
 
+ 
+   
+
+    onCommentInput = (ev,post,enablePostButton) =>{
+        ev.preventDefault()
+        ev.stopPropagation()
+        enablePostButton()
+        const value = ev.target.value
+        this.setState({post:{...post,isCommentsShown:true,comments:[...post.comments,{by:{username: "eugene_b"},txt:value}]}})  //username later  chhange
+        
+      
+      
+   
+    }
+
+    onSaveComment = (ev,disablePostButton) =>{
+        ev.preventDefault ();
+        this.props.savePost(this.state.post);
+        this.props.loadPosts();  
+        this.props.loadPosts() ; 
+        disablePostButton();
+    
+        ev.target.reset();
     }
 
     render() {
@@ -60,7 +106,7 @@ class _PhotoGramApp extends Component {
             <>
                 <Header />
                 <div className="main-container">
-                    <PostList showModal={this.showModal} onLikePost={this.onLikePost} posts={posts} />
+                    <PostList showModal={this.showModal} onLikePost={this.onLikePost} posts={posts}  onToggleComments={this.onToggleComments} onSaveComment={this.onSaveComment} onCommentInput={this.onCommentInput} />
                 </div>
                 <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete} />
             </>

@@ -1,5 +1,3 @@
-
-
 .post-preiew-card {
     padding: 0;
     background-color: $clr5;
@@ -21,7 +19,6 @@
                 background-color: $clr5;
                 font-size: em(25px);
             }
-            
         }
         .user-pic-name {
             display: flex;
@@ -30,10 +27,10 @@
             color: $clr1;
             img {
                 margin-right: 10px;
-                height: 30px;       
+                height: 30px;
                 border-radius: 50%;
             }
-            div{
+            div {
                 margin: 10px;
                 margin: 0;
             }
@@ -41,12 +38,28 @@
     }
     .write-comment {
         display: flex;
+        justify-content: space-between;
         border-top: 1px solid $clr3;
         min-height: 50px;
+        padding-right: 15px;
         input {
+            outline: none;
             border: none;
             padding: 10px 10px 10px 10px;
-            min-width: 100%;
+            min-width: 90%;
+        }
+        button {
+          outline: none;
+            padding: 0;
+            border: none;
+            background: $clr5;
+            color: $clr6;
+            font-weight: bold;
+            opacity: 0.3;
+            &:enabled{
+                cursor: pointer;
+                opacity: 0.9;
+            }
         }
     }
     .shortcuts-bar {
@@ -76,8 +89,13 @@
         .comments-box {
             padding-left: 0;
         }
+        .show-comments {
+            cursor: pointer;
+            &:active{
+                color: $clr2;
+            }
+        }
     }
- 
 }
 
 .incard-img-preview {
@@ -86,7 +104,6 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
-      
     }
     // img {
     //     width: 100%;
