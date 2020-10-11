@@ -1,10 +1,18 @@
 import {postService} from '../../services/postService'
 
 
-export function loadPosts() {
-    return dispatch=>{
-        postService.query().then(posts=>{
-            dispatch({ type: 'SET_POSTS',posts })
+// export function loadPosts() {
+//     return dispatch=>{
+//         postService.query().then(posts=>{
+//             dispatch({ type: 'SET_POSTS',posts })
+//         })
+//     }
+// }
+
+export function loadPosts(filterBy){
+    return dispatch => {
+        postService.query(filterBy).then(posts=>{
+            dispatch({type: 'SET_POSTS', posts});
         })
     }
 }
@@ -24,5 +32,15 @@ export function removePost(postId) {
         await postService.remove(postId)
         dispatch({ type: 'REMOVE_POST', postId })
       };
+}
+
+
+
+export function setFilter() {
+    return dispatch=>{
+        postService.query().then(posts=>{
+            dispatch({ type: 'SET_FILTER',posts })
+        })
+    }
 }
 

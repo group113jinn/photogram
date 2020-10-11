@@ -7,17 +7,36 @@ export const postService = {
     query,
     remove,
     save,
-   
+
 }
 
-function query() {
-// function query(filterBy = {}) {
-//     var queryParams = new URLSearchParams()
-//     if (filterBy.txt) queryParams.set('q', filterBy.txt)
-    // return axios.get(`${BASE_URL}?${queryParams}`)
-    return axios.get(`${BASE_URL}`)
+
+function query(filterBy = {}) {
+    var queryParams = new URLSearchParams()
+    if (filterBy.txt) queryParams.set('q', filterBy.txt)
+    return axios.get(`${BASE_URL}?${queryParams}`)
         .then(resolveData)
 }
+
+
+// function query(filterBy) {
+//     let query = '';
+//     if (filterBy) {
+//         query = '?' + Object.keys(filterBy).map(key => key + '=' + filterBy[key]).join('&');
+//         query = filterBy.txt
+//     }
+//     console.log('query', query);
+//     return axios.get(`${BASE_URL}${query}`).then(res => {
+//         console.log(res.data);
+//         return res.data
+//     });
+// }
+
+
+
+
+
+
 
 function remove(postId) {
     return axios.delete(`${BASE_URL}/${postId}`)
@@ -30,7 +49,3 @@ function save(post) {
         return axios.post(BASE_URL, post).then(resolveData)
     }
 }
-
-
-
-

@@ -1,4 +1,4 @@
-.main-home {
+    .main-home {
     background-color: $clr4;
 }
 
@@ -10,88 +10,133 @@
 }
 
 .home-logo {
-   max-width: 400px;
-
-   img {
-       height: 100%;
-       width: 100%;
-   }
+    max-width: 400px;
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
 
-.signin-container {
-    margin-top: 100px;
-    text-align: center;
+.sign-in-up {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    flex-grow: 1;
+    max-height: 500px;
+    min-height: 400px;
+    min-width: 150px;
+
+      div {
+            button {
+                background-color: $clr4;
+                border: 1px solid $clr3;
+                border-radius: 4px;
+                background-color: $clr6;
+                opacity: 0.7;
+                color: $clr4;
+            }
+            & button:active,
+            & button:hover {
+                cursor: pointer;
+                opacity: 1;
+                background-color: $clr6;
+                color: $clr4;
+            }
+        }
+
+
+.signup-container {
+    display: flex;
     background-color: $clr5;
+    height: 60px;
     border: 1px solid $clr3;
-    border-radius: 3px;
-     flex-grow: 1;
-    max-height: 400px;
-    min-height: 250px;
-    min-width: 200px;
-    input {
-        padding: 6px;
-        outline: none;
-        background-color: $clr4;
-        border: 1px solid $clr3;
-        border-radius: 3px;
-    }
-    h1 {
-        font-family: billabong;
-        color: $clr1;
-        font-size: rem(50px);
-        margin: 0;
-    }
-    div {
-        button {
-            background-color: $clr4;
-            border: 1px solid $clr3;
-            border-radius: 4px;
-            background-color: $clr6;
-            opacity: 0.7;
-            color: $clr4;
-        }
-        & button:active,
-        & button:hover {
-            cursor: pointer;
-            opacity: 1;
-            background-color: $clr6;
-            color: $clr4;
-        }
-    }
-    .login-button {
-        min-width: 140px;
-        padding: 6px;
-    }
-    .guest-button {
+    align-items: center;
+    justify-content: space-around;
+    button{
+        margin-bottom: 20px;
         min-width: 100px;
         padding: 6px;
-    }
-}
-
-@include for-mobile-layout{
-    .home-photo-signin {
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin-top: 5px;
-      
-        h1{
-            font-size: rem(35px);
-        }
-        img{
-            padding: 0 5vh;
-        }
-    
-    }
-    .signin-container{
         margin: 0;
-        order: -1;
-        margin-bottom: 5px;
-        max-width: 400px;
     }
-  
-   
 }
+    .signin-container {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: $clr5;
+        border: 1px solid $clr3;
+        border-radius: 3px;
+        form {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            input {
+                padding: 6px;
+                outline: none;
+                background-color: $clr4;
+                border: 1px solid $clr3;
+                border-radius: 3px;
+            }
+        }
+        h1 {
+            font-family: billabong;
+            color: $clr1;
+            font-size: rem(50px);
+            margin: 20px 0 0 0;
+        }
+        // div {
+        //     button {
+        //         background-color: $clr4;
+        //         border: 1px solid $clr3;
+        //         border-radius: 4px;
+        //         background-color: $clr6;
+        //         opacity: 0.7;
+        //         color: $clr4;
+        //     }
+        //     & button:active,
+        //     & button:hover {
+        //         cursor: pointer;
+        //         opacity: 1;
+        //         background-color: $clr6;
+        //         color: $clr4;
+        //     }
+        // }
+        .login-button {
+            min-width: 140px;
+            padding: 6px;
+        }
+        .guest-button {
+            margin-bottom: 20px;
+            min-width: 100px;
+            padding: 6px;
+        }
+    }
+}
+    @include for-mobile-layout {
+        .home-photo-signin {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            h1 {
+                font-size: rem(35px);
+            }
+            img {
+                padding: 0 5vh;
+            }
+        }
+        // .signin-container{
+        //     margin: 0;
+        //     order: -1;
+        //     margin-bottom: 5px;
+        //     max-width: 400px;
+        // }
+        .sign-in-up {
+            margin: 0;
+            order: -1;
+            max-width: 400px;
+        }
+    }
