@@ -5,6 +5,7 @@ import { Header } from '../cmps/Header'
 import { PostAdd } from '../cmps/PostAdd'
 import { loadPosts, savePost } from '../store/actions/postActions'
 import profile_empty_img from '../assets/img/profile_empty.jpg'
+import {logout} from '../store/actions/userActions'
 
 
 
@@ -45,7 +46,7 @@ class _UserProfile extends Component {
 
                         <div className="add-navigation">
                             <button className="add-button" onClick={this.showModal}>Add Post</button>
-                            <Link to="/"><button className="add-button">Sign out</button></Link>
+                            <Link to="/"><button className="add-button" onClick={this.props.logout}>Sign out</button></Link>
                             <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal}
                                  storeProps={this.props} />
                         </div>
@@ -64,7 +65,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadPosts,
-    savePost
+    savePost,
+    logout
 
 }
 

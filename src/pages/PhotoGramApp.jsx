@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPosts, removePost, savePost, setFilter } from '../store/actions/postActions';
+import { loadPosts, removePost, savePost} from '../store/actions/postActions';
+// import { loadPosts, removePost, savePost, setFilter } from '../store/actions/postActions';
 import { PostList } from '../cmps/PostList'
 import { Header } from '../cmps/Header';
 import { PreviewMenu } from '../cmps/PreviewMenu';
@@ -22,27 +23,14 @@ class _PhotoGramApp extends Component {
         this.props.loadPosts()
     }
 
-    // onSetFilter = (ev) => {
-    //     const value = ev.target.value
-
-    //     this.setState({ ...this.state, filterBy: { txt: value } })
-    //     if (value !== '') { this.props.setFilter(value) }
-    //     else {
-    //         this.props.setFilter(this.state.filterBy.txt)
-    //         this.props.loadPosts()
-    //     }
-    // }
 
    onSetFilter = ({ target }) => {
         var value = target.value 
         var filterBy = { ...this.state.filterBy, txt: value };
         this.setState({ filterBy }, () => {
-            console.log(this.state.filterBy);
             this.props.loadPosts({ ...this.state.filterBy })
         });
     }
-
-
 
 
     onToggleComments = async (ev, post) => {
@@ -135,7 +123,7 @@ const mapDispatchToProps = {
     loadPosts,
     removePost,
     savePost,
-    setFilter
+    // setFilter
 }
 
 export const PhotoGramApp = connect(mapStateToProps, mapDispatchToProps)(_PhotoGramApp)

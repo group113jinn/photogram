@@ -15,7 +15,7 @@ function query(filterBy = {}) {
     var queryParams = new URLSearchParams()
     if (filterBy.txt) queryParams.set('q', filterBy.txt)
     return axios.get(`${BASE_URL}?${queryParams}`)
-        .then(resolveData)
+    .then(resolveData)
 }
 
 
@@ -31,11 +31,6 @@ function query(filterBy = {}) {
 //         return res.data
 //     });
 // }
-
-
-
-
-
 
 
 function remove(postId) {

@@ -36,11 +36,11 @@ export function removePost(postId) {
 
 
 
-export function setFilter() {
-    return dispatch=>{
-        postService.query().then(posts=>{
-            dispatch({ type: 'SET_FILTER',posts })
-        })
-    }
-}
+// export function setFilter() {
+//     return dispatch=>{
+//         postService.query().then(posts=>{
+//             dispatch({ type: 'SET_FILTER',posts })
+//         })
+//     }
+// }
 

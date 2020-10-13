@@ -7,6 +7,7 @@ import { Liked } from './pages/Liked';
 import { Explore } from './pages/Explore';
 import { Share } from './pages/Share';
 import { UserProfile } from './pages/UserProfile';
+import { Signup } from './pages/Signup';
 
 
 
@@ -16,6 +17,7 @@ export function App() {
       <section >
         <Switch>
           <Route component={UserProfile} path='/user/profile' />
+          <Route component={Signup} path='/signup' />
           <Route component={Liked} path='/liked' />
           <Route component={Explore} path='/explore' />
           <Route component={Share} path='/share' />

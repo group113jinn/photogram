@@ -28,11 +28,11 @@ export function postReducer(state = initialState, action) {
                 ...state,
                 posts: [action._post, ...state.posts]
             }
-            case 'SET_FILTER':  
-          return {
-              ...state,
-              posts: state.posts.filter(post => post.txt.split("").join('').includes(action.filterBy.txt))
-                }
+        //     case 'SET_FILTER':  
+        //   return {
+        //       ...state,
+        //       posts: state.posts.filter(post => post.txt.split("").join('').includes(action.filterBy.txt))
+        //         }
 
         default:
             return state
