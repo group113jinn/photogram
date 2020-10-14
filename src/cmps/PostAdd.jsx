@@ -13,8 +13,8 @@ export class PostAdd extends Component {
         {
             _id: "",
             by: {
-                username: "eugene_b",
-                imgUrl: "https://ca.slack-edge.com/T0146T47BKR-U014ETN7XRU-1b360e211eb6-512"
+                username: this.props.loggedInUser.username,
+                imgUrl: this.props.loggedInUser.imgUrl
             },
             imgUrls: [
 
@@ -39,11 +39,11 @@ export class PostAdd extends Component {
 
     onInputChange = (ev) => {
         ev.preventDefault();
-        this.setState(prevState => ({
+        this.setState(() => ({
             isUploading: true,
-            post: {
-                ...prevState.post,
-            }
+            // post: {
+            //     ...prevState.post,
+            // }
         }))
 
         const value = ev.target.value
@@ -57,9 +57,6 @@ export class PostAdd extends Component {
                             [data.secure_url, ...prevState.post.imgUrls]
                     }
                 }))
-
-
-                console.log("uploaded post", this.state.post)
             })
         } else if (ev.target.name === "txt") {
             this.setState(prevState => ({

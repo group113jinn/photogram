@@ -5,11 +5,13 @@ import { loadPosts, removePost, savePost} from '../store/actions/postActions';
 import { PostList } from '../cmps/PostList'
 import { Header } from '../cmps/Header';
 import { PreviewMenu } from '../cmps/PreviewMenu';
+// import profile_empty_img from '../assets/img/profile_empty.jpg'
 
 
 class _PhotoGramApp extends Component {
 
     state = {
+        loggedInUser: this.props.loggedInUser,
         isModalShown: false,
         post: {
             isCommentsShown: false
@@ -67,12 +69,12 @@ class _PhotoGramApp extends Component {
         ev.preventDefault()
         ev.stopPropagation();
         let rest = post.reactions;
-        if (post.reactions.some(reaction => reaction.by.username === "eugene_b")) { // change user
-            const newReactions = (post.reactions.filter(reaction => reaction.by.username !== "eugene_b"));
+        if (post.reactions.some(reaction => reaction.by.username === this.state.loggedInUser.username)) { // change user
+            const newReactions = (post.reactions.filter(reaction => reaction.by.username !== this.state.loggedInUser.username));
             const newPost = { ...post, reactions: newReactions }
             await this.props.savePost(newPost)
         } else {
-            await this.props.savePost({ ...post, reactions: [...rest, { by: { username: "eugene_b" } }] });
+            await this.props.savePost({ ...post, reactions: [...rest, { by: { username: this.state.loggedInUser.username } }] });
         }
         this.props.loadPosts();
     }
@@ -82,7 +84,7 @@ class _PhotoGramApp extends Component {
         ev.stopPropagation()
         enablePostButton()
         const value = ev.target.value
-        this.setState({ post: { ...post, isCommentsShown: true, comments: [...post.comments, { by: { username: "eugene_b" }, txt: value }] } })  //username later  chhange
+        this.setState({ post: { ...post, isCommentsShown: true, comments: [...post.comments, { by: { username: this.state.loggedInUser.username }, txt: value }] } })  //username later  chhange
     }
 
     onSaveComment = async (ev, disablePostButton) => {
@@ -115,14 +117,17 @@ class _PhotoGramApp extends Component {
 const mapStateToProps = state => {
     return {
         posts: state.postReducer.posts,
+        loggedInUser: state.userReducer.loggedInUser
         // filterBy: state.PostReducer.filterBy
+    
     }
 }
 
 const mapDispatchToProps = {
     loadPosts,
     removePost,
-    savePost,
+    savePost
+   
     // setFilter
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../cmps/Header';
+import { uploadImg } from '../services/cloudinary-service';
 
 
 import {
@@ -11,10 +12,14 @@ import {
  class _Signup extends Component {
 
     state = {
+      didUserUploadImage: false,
+      isUploading: false,
         signupCred: {
           email: '',
           password: '',
-          username: ''
+          username: '',
+          imgUrl: []
+        
         }
       }
 
@@ -22,25 +27,51 @@ import {
 
     signupHandleChange = ev => {
         const { name, value } = ev.target;
+      
+        if (name === 'imgUrl') {
+          this.setState(() => ({
+            isUploading: true,
+        }))
+          uploadImg(ev).then((data) => {
+              this.setState(prevState => ({
+                isUploading: false,
+                didUserUploadImage: true,
+                  // post: {
+                  //     ...prevState.post, imgUrls:
+                  //         [data.secure_url, ...prevState.post.imgUrls]
+
+                          signupCred: {
+                            ...prevState.signupCred,
+                            imgUrl: data.secure_url
+           
+                  }
+              }))
+          })
+        }
+        else{
         this.setState(prevState => ({
+          isUploading: false,
           signupCred: {
             ...prevState.signupCred,
             [name]: value
           }
         }));
+        }
       };
 
 
       onSignup = async ev => {
         ev.preventDefault();
-        const { email, password, username } = this.state.signupCred;
+        const { email, password, username, imgUrl } = this.state.signupCred;
+        console.log("shibalba",this.state.signupCred);
         if (!email || !password || !username) {
           return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, username };
+        const signupCreds = { email, password, username, imgUrl };
         console.log(signupCreds);
         this.props.signup(signupCreds);
-        this.setState({ signupCred: { email: '', password: '', username: '' } });
+        this.setState({ signupCred: { email: '', password: '', username: '' },didUserUploadImage: false,
+        isUploading: false });
         this.props.history.push('/feed')
       };
 
@@ -53,6 +84,7 @@ import {
 
 
     render() {
+      const { didUserUploadImage, isUploading } = this.state;
         return (
             <>
                 <Header />
@@ -81,7 +113,15 @@ import {
                              onChange={this.signupHandleChange}
                              placeholder="Username"
                              />
-                            <button type="submit">Save</button>
+                            <input 
+                            name="imgUrl" 
+                            type="file"
+                            // value={this.state.signupCred.imgUrl}
+                            onChange={this.signupHandleChange} />
+                           
+                        
+                            <button type="submit" disabled={!didUserUploadImage}>{isUploading ? "Uploading..." : !didUserUploadImage ? "Upload" : "Save"}</button>
+                      
                         </div>
                     </form>
                 </div>
@@ -93,14 +133,14 @@ import {
 
 const mapStateToProps = state => {
     return {
-      // users: state.userReducer.users,
-    //   loggedInUser: state.userReducer.loggedInUser,
-    //   isLoading: state.systemReducer.isLoading
+      users: state.userReducer.users,
+      loggedInUser: state.userReducer.loggedInUser,
+      isLoading: state.systemReducer.isLoading
     };
   };
   const mapDispatchToProps = {
     signup,
-    removeUser,
+    removeUser
   };
   
   export const Signup = connect(mapStateToProps, mapDispatchToProps)(_Signup);

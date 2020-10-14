@@ -9,8 +9,11 @@ import {
   logout
 } from '../store/actions/userActions';
 
+
  class _Home extends Component {
   state = {
+    didUserUploadImage: false,
+    isUploading: false,
     msg: '',
     loginCred: {
       email: '',
@@ -32,7 +35,6 @@ import {
 
   onLogin = async ev => {
     ev.preventDefault();
-   
     const { email, password } = this.state.loginCred;
     if (!email || !password) {
       return this.setState({ msg: 'Please enter user/password' });
@@ -50,9 +52,9 @@ import {
    
     // const { email, password } = this.state.loginCred;
     
-    const userCreds = { email:'guest@guest.com', password:'guest', username: 'guest' };
+    const userCreds = { email:'guest@guest.com', password:'guest', username: 'guest',imgUrl: '' };
     this.props.login(userCreds);
-    this.setState({ loginCred: { email: '', password: '', username: '' } });
+    this.setState({ loginCred: { email: '', password: '', username: '',imgUrl: '' } });
     this.props.history.push('/feed')
     
   };
@@ -119,9 +121,9 @@ import {
 const mapStateToProps = state => {
  
   return {
-    // users: state.userReducer.users,
-    // loggedInUser: state.userReducer.loggedInUser,
-    // isLoading: state.systemReducer.isLoading
+    users: state.userReducer.users,
+    loggedInUser: state.userReducer.loggedInUser,
+    isLoading: state.systemReducer.isLoading
   };
 };
 const mapDispatchToProps = {

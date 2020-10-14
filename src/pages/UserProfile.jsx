@@ -13,11 +13,13 @@ class _UserProfile extends Component {
     state = {
         isModalShown: false,
         post: null
+        
     }
 
 
     componentDidMount() {
         this.props.loadPosts()
+     
     }
 
     showModal = () => {
@@ -31,23 +33,23 @@ class _UserProfile extends Component {
 
     }
 
-    setProfilePhoto = () => {//temporary until userservice
-        const profile_photo = "https://ca.slack-edge.com/T0146T47BKR-U014ETN7XRU-1b360e211eb6-512"
-    return profile_photo?profile_photo:profile_empty_img
-    }
+    
 
     render() {
+        const {loggedInUser} = this.props
+        const profile_photo = !loggedInUser || !loggedInUser.imgUrl === "" || !loggedInUser.imgUrl ? profile_empty_img : loggedInUser.imgUrl
+        // const profile_photo = profile_empty_img
         return (
             <>
-                <Header setProfilePhoto={this.setProfilePhoto}/>
+                <Header />
                 <section className="profile-container">
-                    <img src={this.setProfilePhoto()} alt="profile_picture" className="profile-pic" />
+                    <img src={profile_photo} alt="profile_picture" className="profile-pic" />
                     <div className="add-post-container">
 
                         <div className="add-navigation">
                             <button className="add-button" onClick={this.showModal}>Add Post</button>
                             <Link to="/"><button className="add-button" onClick={this.props.logout}>Sign out</button></Link>
-                            <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal}
+                            <PostAdd isModalShown={this.state.isModalShown} closeModal={this.closeModal} loggedInUser={loggedInUser}
                                  storeProps={this.props} />
                         </div>
                     </div>
@@ -59,7 +61,9 @@ class _UserProfile extends Component {
 
 const mapStateToProps = state => {
     return {
-        posts: state.postReducer.posts
+        posts: state.postReducer.posts,
+        loggedInUser: state.userReducer.loggedInUser
+    
     }
 }
 
@@ -67,6 +71,7 @@ const mapDispatchToProps = {
     loadPosts,
     savePost,
     logout
+
 
 }
 
