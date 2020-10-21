@@ -42,7 +42,10 @@ import {
     const userCreds = { email, password };
     this.props.login(userCreds);
     this.setState({ loginCred: { email: '', password: '' } });
-    this.props.history.push('/feed')
+    setTimeout(() => {
+      this.props.history.push('/feed')
+    }, 200);
+    
     }
   };
 
@@ -55,7 +58,10 @@ import {
     const userCreds = { email:'guest@guest.com', password:'guest', username: 'guest',imgUrl: '' };
     this.props.login(userCreds);
     this.setState({ loginCred: { email: '', password: '', username: '',imgUrl: '' } });
-    this.props.history.push('/feed')
+    setTimeout(() => {
+      this.props.history.push('/feed')
+    }, 200);
+    
     
   };
 

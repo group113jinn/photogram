@@ -69,7 +69,7 @@ class _PhotoGramApp extends Component {
         ev.preventDefault()
         ev.stopPropagation();
         let rest = post.reactions;
-        if (post.reactions.some(reaction => reaction.by.username === this.state.loggedInUser.username)) { // change user
+        if (post.reactions.some(reaction => reaction.by.username === this.state.loggedInUser.username)) { 
             const newReactions = (post.reactions.filter(reaction => reaction.by.username !== this.state.loggedInUser.username));
             const newPost = { ...post, reactions: newReactions }
             await this.props.savePost(newPost)
@@ -106,7 +106,7 @@ class _PhotoGramApp extends Component {
                 <Header onSetFilter={this.onSetFilter} />
                 <div className="main-container">
                     <PostList showModal={this.showModal} onLikePost={this.onLikePost} posts={posts} onToggleComments={this.onToggleComments}
-                        onSaveComment={this.onSaveComment} onCommentInput={this.onCommentInput} />
+                        onSaveComment={this.onSaveComment} onCommentInput={this.onCommentInput} loggedInUser={this.props.loggedInUser}/>
                 </div>
                 <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete} />
             </>

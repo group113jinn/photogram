@@ -72,7 +72,10 @@ import {
         this.props.signup(signupCreds);
         this.setState({ signupCred: { email: '', password: '', username: '' },didUserUploadImage: false,
         isUploading: false });
-        this.props.history.push('/feed')
+        setTimeout(() => {
+          this.props.history.push('/feed')
+        }, 400);
+    
       };
 
 

@@ -41,9 +41,6 @@ export class PostAdd extends Component {
         ev.preventDefault();
         this.setState(() => ({
             isUploading: true,
-            // post: {
-            //     ...prevState.post,
-            // }
         }))
 
         const value = ev.target.value
