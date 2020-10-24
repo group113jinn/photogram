@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    : '//localhost:3010/'
+    : '//localhost:3030/api/'
 
 
 var axios = Axios.create({
@@ -34,7 +34,9 @@ async function ajax(endpoint, method = 'get', data = null) {
             url: `${BASE_URL}${endpoint}`,
             method,
             data
+            
         })
+        console.log("httpServive data:" ,res.data);
         return res.data;
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`);

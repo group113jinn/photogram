@@ -1,28 +1,33 @@
 .profile-container {
     display: flex;
     justify-content: space-around;
-
+    align-items: flex-end;
     position: relative;
     top: 9vh;
-    
+         .profile-user-name{
+             font-size: rem(24px);
+             justify-self: start;
+             margin-bottom: 0;
+         }
         .profile-pic{
             height: 150px;
             width: 150px;
             border-radius: 50%;
         }
         @include for-mobile-layout {
-            top: 19vh;
+            top: 16vh;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            text-align: center;
         }
     
 }
 
 .add-post-container {
+    display: flex;
+justify-content: space-between;
     position: relative;
-    text-align: center;
-    padding-top: 100px;
-   
     .add-navigation {
         top: 200px;
         a {
@@ -30,6 +35,7 @@
               text-decoration: none;
         }
         .add-button {
+            margin: 20px 20px  0 20px;
             border-radius: 2px;
             height: 30px;
             border: 1px solid $clr3;

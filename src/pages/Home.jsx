@@ -52,9 +52,7 @@ import {
 
   onGuestLogin = async ev => {
     ev.preventDefault();
-   
     // const { email, password } = this.state.loginCred;
-    
     const userCreds = { email:'guest@guest.com', password:'guest', username: 'guest',imgUrl: '' };
     this.props.login(userCreds);
     this.setState({ loginCred: { email: '', password: '', username: '',imgUrl: '' } });

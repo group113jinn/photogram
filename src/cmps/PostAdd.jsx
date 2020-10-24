@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
-import { uploadImg } from '../services/cloudinary-service'
+import { uploadImg } from '../services/cloudinaryService'
+import profile_empty_img from '../assets/img/profile_empty.jpg'
+
 
 
 
@@ -11,7 +13,7 @@ export class PostAdd extends Component {
         isUploading: false,
         post:
         {
-            _id: "",
+            
             by: {
                 username: this.props.loggedInUser.username,
                 imgUrl: this.props.loggedInUser.imgUrl
@@ -71,34 +73,31 @@ export class PostAdd extends Component {
 
     render() {
         const { closeModal, isModalShown } = this.props;
+        const loggedInUser = this.props.loggedInUser
         const { post, didUserUploadImage, isUploading } = this.state;
+        const profile_photo = !loggedInUser || !loggedInUser.imgUrl === "" || !loggedInUser.imgUrl ? profile_empty_img : loggedInUser.imgUrl
         return (
-
             <div>
                 <div className={`modal-wrapper ${isModalShown ? '' : 'hide'}`} onClick={closeModal} >
-
                     <ul className="add-modal-content " onClick={(ev) => ev.stopPropagation()}>
                         <form onSubmit={(ev) => this.postAdd(ev, post)}>
                             <li className="incard-header">
                                 <div className="user-pic-name">
-                                    <img src={post.by.imgUrl} alt="user" />
+                                    <img src={profile_photo} alt="" />
                                     <div>{post.by.username}</div>
                                 </div>
                             </li>
                             <li className="incard-img-preview">
                                 <img src={post.imgUrls[0]} alt="" />
                             </li>
-
                             <li className="write-comment">
                                 <input name="txt" type="text" placeholder="Write a description..." onChange={this.onInputChange} ></input>
                             </li>
-
                             <li> <input name="imgUrls" type="file"  onChange={this.onInputChange} />
                             </li>
                             <li>
                                 <button type="submit" disabled={!didUserUploadImage}>{isUploading ? "Uploading..." : !didUserUploadImage ? "" : "Post"}</button>
                             </li>
-
                             <li onClick={closeModal}>Close</li>
                         </form>
                     </ul>
