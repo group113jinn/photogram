@@ -5,7 +5,6 @@ import { loading, doneLoading } from './systemActions';
 
 
 export function loadUsers() {
-  console.log("kawabanga");
     return async dispatch => {
       try {
         dispatch(loading());

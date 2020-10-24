@@ -9,10 +9,16 @@
              justify-self: start;
              margin-bottom: 0;
          }
-        .profile-pic{
+        .profile-user-pic{
             height: 150px;
             width: 150px;
-            border-radius: 50%;
+            .profile-pic {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            
         }
         @include for-mobile-layout {
             top: 16vh;

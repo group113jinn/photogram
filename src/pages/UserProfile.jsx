@@ -43,8 +43,10 @@ class _UserProfile extends Component {
             <>
                 <Header />
                 <section className="profile-container">
+                    <div className="profile-user-pic">
                     <img src={profile_photo} alt="" className="profile-pic" />
-                    <div className="profile-user-name">User: {this.props.loggedInUser.username}</div>
+                    </div>
+                    <div className="profile-user-name">{this.props.loggedInUser.username}</div>
                     <div className="add-post-container">
                         <div className="add-navigation">
                             <button className="add-button" onClick={this.showModal}>Add Post</button>

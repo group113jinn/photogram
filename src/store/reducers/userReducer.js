@@ -5,7 +5,6 @@ if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 const initialState = {
     users: [],
     loggedInUser: localLoggedinUser,
-    cartItems: []
 }
 
 export function userReducer(state = initialState, action = {}) {
@@ -19,8 +18,6 @@ export function userReducer(state = initialState, action = {}) {
                 ...state,
                 users: state.users.filter(user => user._id !== action.userId)
             };
-   
-
         default:
             return state
     }

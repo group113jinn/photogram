@@ -36,7 +36,7 @@ async function ajax(endpoint, method = 'get', data = null) {
             data
             
         })
-        console.log("httpServive data:" ,res.data);
+        console.log("httpService data:" ,res.data);
         return res.data;
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`);

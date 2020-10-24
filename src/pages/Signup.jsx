@@ -18,7 +18,7 @@ class _Signup extends Component {
       email: '',
       password: '',
       username: '',
-      imgUrl: []
+      imgUrl: ''
 
     }
   }
@@ -60,15 +60,14 @@ class _Signup extends Component {
   onSignup = async ev => {
     ev.preventDefault();
     const { email, password, username, imgUrl } = this.state.signupCred;
-    console.log("shibalba", this.state.signupCred);
     if (!email || !password || !username) {
       return this.setState({ msg: 'All inputs are required!' });
     }
     const signupCreds = { email, password, username, imgUrl };
-    console.log(signupCreds);
+    console.log("signup info creds",signupCreds);
     this.props.signup(signupCreds);
     this.setState({
-      signupCred: { email: '', password: '', username: '' }, didUserUploadImage: false,
+      signupCred: { email: '', password: '', username: '',imgUrl: '' }, didUserUploadImage: false,
       isUploading: false
     });
     setTimeout(() => {
