@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadPosts, removePost, savePost} from '../store/actions/postActions';
+import { loadPosts, removePost, savePost } from '../store/actions/postActions';
 // import { loadPosts, removePost, savePost, setFilter } from '../store/actions/postActions';
 import { PostList } from '../cmps/PostList'
 import { Header } from '../cmps/Header';
@@ -26,8 +26,8 @@ class _PhotoGramApp extends Component {
     }
 
 
-   onSetFilter = ({ target }) => {
-        var value = target.value 
+    onSetFilter = ({ target }) => {
+        var value = target.value
         var filterBy = { ...this.state.filterBy, txt: value };
         this.setState({ filterBy }, () => {
             this.props.loadPosts({ ...this.state.filterBy })
@@ -69,7 +69,7 @@ class _PhotoGramApp extends Component {
         ev.preventDefault()
         ev.stopPropagation();
         let rest = post.reactions;
-        if (post.reactions.some(reaction => reaction.by.username === this.state.loggedInUser.username)) { 
+        if (post.reactions.some(reaction => reaction.by.username === this.state.loggedInUser.username)) {
             const newReactions = (post.reactions.filter(reaction => reaction.by.username !== this.state.loggedInUser.username));
             const newPost = { ...post, reactions: newReactions }
             await this.props.savePost(newPost)
@@ -95,9 +95,7 @@ class _PhotoGramApp extends Component {
     }
 
     render() {
-
         const { post } = this.state
-
         const { isModalShown } = this.state
         const { posts } = this.props
         if (!posts) return <div></div>
@@ -106,7 +104,7 @@ class _PhotoGramApp extends Component {
                 <Header onSetFilter={this.onSetFilter} />
                 <div className="main-container">
                     <PostList showModal={this.showModal} onLikePost={this.onLikePost} posts={posts} onToggleComments={this.onToggleComments}
-                        onSaveComment={this.onSaveComment} onCommentInput={this.onCommentInput} loggedInUser={this.props.loggedInUser}/>
+                        onSaveComment={this.onSaveComment} onCommentInput={this.onCommentInput} loggedInUser={this.props.loggedInUser} />
                 </div>
                 <PreviewMenu isModalShown={isModalShown} post={post} closeModal={this.closeModal} onDelete={this.onDelete} />
             </>
@@ -119,7 +117,7 @@ const mapStateToProps = state => {
         posts: state.postReducer.posts,
         loggedInUser: state.userReducer.loggedInUser
         // filterBy: state.PostReducer.filterBy
-    
+
     }
 }
 
@@ -127,7 +125,7 @@ const mapDispatchToProps = {
     loadPosts,
     removePost,
     savePost
-   
+
     // setFilter
 }
 

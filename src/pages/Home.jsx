@@ -35,30 +35,34 @@ import {
 
   onLogin = async ev => {
     ev.preventDefault();
+    if(ev.target.name === "guest"){
+         const userCreds = { email:'guest@guest.com', password:'guest' };
+    this.props.login(userCreds)
+        .then (()=> this.props.history.push('/feed'))
+    }else{
     const { email, password } = this.state.loginCred;
     if (!email || !password) {
       return this.setState({ msg: 'Please enter user/password' });
     }else{
     const userCreds = { email, password };
-    this.props.login(userCreds);
+    this.props.login(userCreds)
+          .then (()=>this.props.history.push('/feed'))
     this.setState({ loginCred: { email: '', password: '' } });
-    setTimeout(() => {
-      this.props.history.push('/feed')
-    }, 200);
-    
     }
+  }
   };
 
 
   onGuestLogin = async ev => {
     ev.preventDefault();
-    // const { email, password } = this.state.loginCred;
-    const userCreds = { email:'guest@guest.com', password:'guest', username: 'guest',imgUrl: '' };
-    this.props.login(userCreds);
-    this.setState({ loginCred: { email: '', password: '', username: '',imgUrl: '' } });
-    setTimeout(() => {
+   await this.setState({ loginCred: { email: 'guest@guest.com', password: 'guest' } });
+    await this.onLogin(ev)
+    // const userCreds = { email:'guest@guest.com', password:'guest' };
+    // this.props.login(userCreds);
+    // this.setState({ loginCred: { email: '', password: '' } });
+    // setTimeout(() => {
       this.props.history.push('/feed')
-    }, 200);
+    // }, 600);
     
     
   };
@@ -99,7 +103,7 @@ import {
                 </div>
               </form>
               <div>
-                <button className="guest-button" onClick={this.onGuestLogin}>Guest</button>
+                <button className="guest-button" name="guest" onClick={this.onLogin}>Guest</button>
               </div>
 
             </article>

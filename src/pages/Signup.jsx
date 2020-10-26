@@ -65,15 +65,13 @@ class _Signup extends Component {
     }
     const signupCreds = { email, password, username, imgUrl };
     console.log("signup info creds",signupCreds);
-    this.props.signup(signupCreds);
+    this.props.signup(signupCreds)
+    .then(()=>this.props.history.push('/feed'))
     this.setState({
       signupCred: { email: '', password: '', username: '',imgUrl: '' }, didUserUploadImage: false,
       isUploading: false
     });
-    setTimeout(() => {
-      this.props.history.push('/feed')
-    }, 400);
-
+     
   };
 
 
@@ -114,10 +112,9 @@ class _Signup extends Component {
                 onChange={this.signupHandleChange}
                 placeholder="Username"
               />
-              <input
+              <input className="file-upload"
                 name="imgUrl"
                 type="file"
-                // value={this.state.signupCred.imgUrl}
                 onChange={this.signupHandleChange} />
 
 

@@ -1,6 +1,6 @@
 import httpService from './httpService'
-const BASE_URL_AUTH = 'api/auth'
-const BASE_URL_USER = 'api/users'
+// const BASE_URL_AUTH = 'api/auth'
+// const BASE_URL_USER = 'api/users'
 
 
 
@@ -16,7 +16,6 @@ export const userService = {
 
 async function getUsers() {
    const res =  await httpService.get('users')
-   console.log("users",res);
     return res
 }
 
@@ -38,7 +37,6 @@ async function login(userCred) {
 }
  
 async function signup(userCred) {
-    console.log("userService signup usercersd",userCred);
     const user = await httpService.post('auth/signup', userCred)
     return _handleLogin(user)
 }

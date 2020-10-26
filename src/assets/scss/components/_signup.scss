@@ -17,6 +17,7 @@
         background-color: $clr5;
         min-height: 300px;
         max-width: 400px;
+      
         input {
             padding: 6px;
             outline: none;
@@ -46,6 +47,8 @@
         }
     }
 }
+
+
 
 @include for-mobile-layout {
     .main-signup{
