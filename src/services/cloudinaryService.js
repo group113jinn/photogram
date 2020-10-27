@@ -11,7 +11,6 @@
             body: formData
         })
         const data = await res.json()
-        console.log("data",data.secure_url);
         return data
 
     } catch (err) {

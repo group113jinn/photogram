@@ -64,7 +64,6 @@ class _Signup extends Component {
       return this.setState({ msg: 'All inputs are required!' });
     }
     const signupCreds = { email, password, username, imgUrl };
-    console.log("signup info creds",signupCreds);
     this.props.signup(signupCreds)
     .then(()=>this.props.history.push('/feed'))
     this.setState({

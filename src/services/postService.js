@@ -9,12 +9,9 @@ export const postService = {
 
 
 async function query(filterBy = {}) {
-    // const res =  await httpService.get('posts')
     var queryParams = new URLSearchParams()
     if (filterBy.txt) queryParams.set('q', filterBy.txt)
     return httpService.get(`${'posts'}?${queryParams}`)
-    // .then(resolveData)
-    // return res
 }
 
 
@@ -30,6 +27,5 @@ function save(post) {
         return httpService.put(`posts/${post._id}`, post)
     } else {
         return httpService.post('posts', post)
-        // .then(resolveData)
     }
 }
